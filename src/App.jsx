@@ -207,11 +207,16 @@ const SUBURB_DATA = {
   "noble park": { house: 760000, unit: 450000, growth: 5.6, competition: "medium", daysOnMarket: 22 },
   "dandenong": { house: 680000, unit: 420000, growth: 5.9, competition: "medium", daysOnMarket: 22 },
   "keysborough": { house: 820000, unit: 480000, growth: 5.2, competition: "medium", daysOnMarket: 23 },
-  "glen waverley": { house: 1180000, unit: 620000, growth: 4.8, competition: "very high", daysOnMarket: 16 },
   "bayside": { house: 1820000, unit: 760000, growth: 2.8, competition: "high", daysOnMarket: 27 },
 };
 
 const BEDROOM_ADJUSTMENTS = { 1: -0.32, 2: -0.12, 3: 0, 4: 0.22, 5: 0.42 };
+const LAND_ADJUSTMENTS = {
+  "under300": -0.12,
+  "300to500": 0,
+  "500to700": 0.10,
+  "700plus": 0.22
+};
 
 function findSuburb(input) {
   const clean = input.toLowerCase().trim().replace(/\s+/g, " ");
@@ -275,9 +280,16 @@ function getRisks(comp, dom, listing, high) {
   return risks;
 }
 
+const LAND_LABELS = {
+  "under300": "Under 300sqm",
+  "300to500": "300–500sqm",
+  "500to700": "500–700sqm",
+  "700plus": "700sqm+"
+};
+
 export default function App() {
   const [step, setStep] = useState("home");
-  const [form, setForm] = useState({ suburb: "", propertyType: "house", bedrooms: "3", listingPrice: "" });
+  const [form, setForm] = useState({ suburb: "", propertyType: "house", bedrooms: "3", landSize: "300to500", listingPrice: "" });
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
   const [consultSent, setConsultSent] = useState(false);
@@ -315,6 +327,8 @@ export default function App() {
     ctaInp: { width: "100%", padding: "13px 14px", borderRadius: 10, border: "none", fontSize: 15, background: "rgba(255,255,255,.15)", color: "#fff", marginBottom: 8, fontFamily: "inherit", outline: "none", boxSizing: "border-box" },
     ctaBtn: { background: AM, color: "#fff", border: "none", borderRadius: 12, padding: 15, fontSize: 16, fontWeight: 700, cursor: "pointer", width: "100%", fontFamily: "inherit" },
     footer: { background: "#fff", borderTop: "1px solid #E8E4DF", padding: "18px 20px", textAlign: "center", fontSize: 12, color: MD, lineHeight: 1.7 },
+    landBtn: { flex: 1, padding: "10px 4px", borderRadius: 8, border: "1.5px solid #D8D4CF", fontSize: 12, fontWeight: 600, cursor: "pointer", textAlign: "center", background: "#fff", color: MD, fontFamily: "inherit", transition: "all 0.15s" },
+    landBtnActive: { flex: 1, padding: "10px 4px", borderRadius: 8, border: `1.5px solid ${G}`, fontSize: 12, fontWeight: 700, cursor: "pointer", textAlign: "center", background: "#E6F4ED", color: G, fontFamily: "inherit" },
   };
 
   const goTo = (screen) => { setStep(screen); window.scrollTo(0, 0); };
@@ -326,8 +340,9 @@ export default function App() {
     const { key, data } = found;
     const base = form.propertyType === "house" ? data.house : data.unit;
     if (!base) { setError("No data available for this property type in this suburb."); return; }
-    const adj = BEDROOM_ADJUSTMENTS[parseInt(form.bedrooms)] || 0;
-    const mid = Math.round(base * (1 + adj) / 1000) * 1000;
+    const bedAdj = BEDROOM_ADJUSTMENTS[parseInt(form.bedrooms)] || 0;
+    const landAdj = form.propertyType === "house" ? (LAND_ADJUSTMENTS[form.landSize] || 0) : 0;
+    const mid = Math.round(base * (1 + bedAdj + landAdj) / 1000) * 1000;
     const low = Math.round(mid * 0.92 / 1000) * 1000;
     const high = Math.round(mid * 1.08 / 1000) * 1000;
     const listing = parseInt(form.listingPrice.replace(/[^0-9]/g, ""));
@@ -338,14 +353,15 @@ export default function App() {
     const strategies = getStrategies(pos.label, data.competition, data.daysOnMarket, listing, low, high, open, walk);
     const risks = getRisks(data.competition, data.daysOnMarket, listing, high);
     const needsPro = pos.label === "Overpriced" || pos.label === "Slightly High" || data.competition === "very high";
-    setResult({ low, high, pos, strategies, open, walk, risks, needsPro, listing, data, suburb: key, propertyType: form.propertyType, bedrooms: form.bedrooms });
+    setResult({ low, high, pos, strategies, open, walk, risks, needsPro, listing, data, suburb: key, propertyType: form.propertyType, bedrooms: form.bedrooms, landSize: form.landSize });
     goTo("result");
   };
 
   const sendConsult = () => {
     if (!consultName.trim()) return;
+    const landInfo = result.propertyType === "house" ? `\nLand Size: ${LAND_LABELS[result.landSize]}` : "";
     const sub = encodeURIComponent(`Fair Offer App — Consultation Request from ${consultName}`);
-    const body = encodeURIComponent(`Hi Erhan,\n\nI used the Fair Offer App and would like a free consultation.\n\nSuburb: ${result.suburb}\nType: ${result.propertyType}\nBedrooms: ${result.bedrooms}\nListing Price: ${fmt(result.listing)}\nFair Value: ${fmt(result.low)} – ${fmt(result.high)}\nVerdict: ${result.pos.label}\n\nName: ${consultName}\nPhone: ${consultPhone || "Not provided"}\n\nPlease contact me.\n\nThank you.`);
+    const body = encodeURIComponent(`Hi Erhan,\n\nI used the Fair Offer App and would like a free consultation.\n\nSuburb: ${result.suburb}\nType: ${result.propertyType}\nBedrooms: ${result.bedrooms}${landInfo}\nListing Price: ${fmt(result.listing)}\nFair Value: ${fmt(result.low)} – ${fmt(result.high)}\nVerdict: ${result.pos.label}\n\nName: ${consultName}\nPhone: ${consultPhone || "Not provided"}\n\nPlease contact me.\n\nThank you.`);
     window.location.href = `mailto:erhan@newpfproperty.com.au?subject=${sub}&body=${body}`;
     setConsultSent(true);
   };
@@ -365,7 +381,7 @@ export default function App() {
       </div>
       <div style={s.sec}>
         <p style={{ fontSize: 12, fontWeight: 700, color: MD, textTransform: "uppercase", letterSpacing: ".5px", marginBottom: 16 }}>How it works</p>
-        {[["Enter the details", "Suburb, property type, bedrooms, and the asking price."], ["Get your price check", "We compare the listing against suburb median data."], ["Get your strategy", "Opening offer, walk-away number, and what to say."], ["Talk to an expert", "Complex deal? Book a free NewPF consultation."]].map(([title, desc], i) => (
+        {[["Enter the details", "Suburb, property type, bedrooms, land size and the asking price."], ["Get your price check", "We compare the listing against suburb median data."], ["Get your strategy", "Opening offer, walk-away number, and what to say."], ["Talk to an expert", "Complex deal? Book a free NewPF consultation."]].map(([title, desc], i) => (
           <div key={i} style={{ display: "flex", gap: 14, marginBottom: 18, alignItems: "flex-start" }}>
             <div style={{ background: G, color: "#fff", borderRadius: "50%", width: 30, height: 30, minWidth: 30, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700 }}>{i + 1}</div>
             <div><p style={{ fontSize: 15, fontWeight: 700, marginBottom: 3, color: DK }}>{title}</p><p style={{ fontSize: 13, color: MD, lineHeight: 1.5 }}>{desc}</p></div>
@@ -401,6 +417,16 @@ export default function App() {
           <div><label style={s.lbl}>Property Type</label><select style={s.sel} value={form.propertyType} onChange={e => setForm({ ...form, propertyType: e.target.value })}><option value="house">House</option><option value="unit">Unit / Apt</option></select></div>
           <div><label style={s.lbl}>Bedrooms</label><select style={s.sel} value={form.bedrooms} onChange={e => setForm({ ...form, bedrooms: e.target.value })}>{[1,2,3,4,5].map(n => <option key={n} value={n}>{n} bed</option>)}</select></div>
         </div>
+        {form.propertyType === "house" && (
+          <div style={s.fg}>
+            <label style={s.lbl}>Land Size</label>
+            <div style={{ display: "flex", gap: 8 }}>
+              {[["under300","<300sqm"],["300to500","300–500"],["500to700","500–700"],["700plus","700sqm+"]].map(([val, label]) => (
+                <button key={val} style={form.landSize === val ? s.landBtnActive : s.landBtn} onClick={() => setForm({ ...form, landSize: val })}>{label}</button>
+              ))}
+            </div>
+          </div>
+        )}
         <div style={s.fg}><label style={s.lbl}>Asking Price</label><input style={s.inp} placeholder="e.g. 1200000" value={form.listingPrice} onChange={e => setForm({ ...form, listingPrice: e.target.value })} inputMode="numeric" /><p style={{ fontSize: 11, color: MD, marginTop: 5 }}>Enter without $ or commas</p></div>
         <button style={s.aBtn} onClick={analyse}>Analyse This Property →</button>
         <p style={{ fontSize: 11, color: MD, textAlign: "center", marginTop: 14, lineHeight: 1.5 }}>Based on Melbourne suburb median data. Not a formal valuation.</p>
@@ -418,7 +444,9 @@ export default function App() {
           <div style={s.hdrSub}>Price Analysis</div>
         </div>
         <div style={{ background: result.pos.bg, padding: "22px 20px 18px" }}>
-          <span style={{ background: "rgba(0,0,0,.08)", borderRadius: 20, padding: "4px 11px", fontSize: 11, color: result.pos.color, display: "inline-block", marginBottom: 14, fontWeight: 700 }}>{cap(result.suburb)} · {result.bedrooms}bd {result.propertyType}</span>
+          <span style={{ background: "rgba(0,0,0,.08)", borderRadius: 20, padding: "4px 11px", fontSize: 11, color: result.pos.color, display: "inline-block", marginBottom: 14, fontWeight: 700 }}>
+            {cap(result.suburb)} · {result.bedrooms}bd {result.propertyType}{result.propertyType === "house" ? ` · ${LAND_LABELS[result.landSize]}` : ""}
+          </span>
           <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase", marginBottom: 6, color: result.pos.color }}>{result.pos.icon} Verdict</p>
           <p style={{ fontSize: 28, fontWeight: 900, letterSpacing: "-.5px", marginBottom: 3, color: result.pos.color }}>{result.pos.label}</p>
           <p style={{ fontSize: 14, color: result.pos.color, opacity: .8 }}>Listing: {fmt(result.listing)}</p>
