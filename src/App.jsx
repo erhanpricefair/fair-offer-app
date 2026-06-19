@@ -14,34 +14,216 @@ const SUBURB_DATA = {
   "malvern": { house: 2100000, unit: 760000, growth: 2.8, competition: "very high", daysOnMarket: 22 },
   "toorak": { house: 4200000, unit: 1100000, growth: 2.1, competition: "very high", daysOnMarket: 35 },
   "armadale": { house: 2350000, unit: 820000, growth: 2.6, competition: "very high", daysOnMarket: 28 },
-  "glen waverley": { house: 1180000, unit: 620000, growth: 4.8, competition: "very high", daysOnMarket: 16 },
+  "fitzroy north": { house: 1720000, unit: 740000, growth: 3.9, competition: "very high", daysOnMarket: 17 },
+  "carlton": { house: 1450000, unit: 580000, growth: 3.2, competition: "high", daysOnMarket: 22 },
+  "carlton north": { house: 1580000, unit: 620000, growth: 3.5, competition: "high", daysOnMarket: 20 },
+  "brunswick east": { house: 1220000, unit: 540000, growth: 3.8, competition: "high", daysOnMarket: 21 },
+  "brunswick west": { house: 1180000, unit: 520000, growth: 3.6, competition: "high", daysOnMarket: 23 },
+  "clifton hill": { house: 1420000, unit: 640000, growth: 3.7, competition: "high", daysOnMarket: 20 },
+  "abbotsford": { house: 1380000, unit: 620000, growth: 3.4, competition: "high", daysOnMarket: 21 },
+  "cremorne": { house: 1320000, unit: 680000, growth: 4.2, competition: "high", daysOnMarket: 19 },
+  "port melbourne": { house: 1580000, unit: 720000, growth: 3.1, competition: "high", daysOnMarket: 22 },
+  "south melbourne": { house: 1620000, unit: 740000, growth: 3.0, competition: "high", daysOnMarket: 23 },
+  "albert park": { house: 2100000, unit: 820000, growth: 2.8, competition: "very high", daysOnMarket: 25 },
+  "middle park": { house: 2250000, unit: 860000, growth: 2.6, competition: "very high", daysOnMarket: 27 },
+  "elwood": { house: 1680000, unit: 720000, growth: 2.9, competition: "high", daysOnMarket: 24 },
+  "st kilda east": { house: 1320000, unit: 590000, growth: 2.8, competition: "high", daysOnMarket: 24 },
+  "st kilda west": { house: 1680000, unit: 740000, growth: 2.7, competition: "high", daysOnMarket: 26 },
+  "balaclava": { house: 1480000, unit: 680000, growth: 2.9, competition: "high", daysOnMarket: 22 },
+  "ripponlea": { house: 1420000, unit: 650000, growth: 3.1, competition: "high", daysOnMarket: 21 },
+  "windsor": { house: 1520000, unit: 700000, growth: 3.2, competition: "high", daysOnMarket: 20 },
+  "docklands": { house: 0, unit: 620000, growth: 2.5, competition: "medium", daysOnMarket: 35 },
+  "west melbourne": { house: 1280000, unit: 580000, growth: 3.3, competition: "medium", daysOnMarket: 24 },
+  "north melbourne": { house: 1320000, unit: 580000, growth: 3.4, competition: "high", daysOnMarket: 21 },
+  "kensington": { house: 1180000, unit: 560000, growth: 3.8, competition: "high", daysOnMarket: 20 },
+  "hawthorn east": { house: 1860000, unit: 720000, growth: 3.0, competition: "very high", daysOnMarket: 20 },
+  "glen iris": { house: 1820000, unit: 720000, growth: 3.1, competition: "very high", daysOnMarket: 21 },
+  "malvern east": { house: 1950000, unit: 740000, growth: 2.7, competition: "very high", daysOnMarket: 23 },
+  "ashburton": { house: 1480000, unit: 680000, growth: 3.2, competition: "high", daysOnMarket: 22 },
+  "surrey hills": { house: 1680000, unit: 680000, growth: 3.3, competition: "very high", daysOnMarket: 20 },
+  "mont albert": { house: 1580000, unit: 660000, growth: 3.4, competition: "high", daysOnMarket: 21 },
   "box hill": { house: 1090000, unit: 580000, growth: 5.1, competition: "very high", daysOnMarket: 15 },
+  "box hill south": { house: 1050000, unit: 560000, growth: 5.0, competition: "high", daysOnMarket: 17 },
+  "box hill north": { house: 980000, unit: 540000, growth: 4.8, competition: "high", daysOnMarket: 18 },
+  "nunawading": { house: 920000, unit: 520000, growth: 4.6, competition: "high", daysOnMarket: 20 },
+  "mitcham": { house: 880000, unit: 500000, growth: 4.7, competition: "medium", daysOnMarket: 22 },
+  "vermont": { house: 920000, unit: 510000, growth: 4.5, competition: "medium", daysOnMarket: 23 },
+  "vermont south": { house: 960000, unit: 520000, growth: 4.4, competition: "medium", daysOnMarket: 22 },
+  "forest hill": { house: 870000, unit: 490000, growth: 4.8, competition: "medium", daysOnMarket: 23 },
+  "blackburn": { house: 1020000, unit: 560000, growth: 4.6, competition: "high", daysOnMarket: 20 },
+  "blackburn south": { house: 980000, unit: 540000, growth: 4.5, competition: "high", daysOnMarket: 21 },
+  "blackburn north": { house: 960000, unit: 530000, growth: 4.4, competition: "medium", daysOnMarket: 22 },
   "doncaster": { house: 1150000, unit: 640000, growth: 4.2, competition: "high", daysOnMarket: 20 },
-  "brighton": { house: 2400000, unit: 880000, growth: 2.4, competition: "very high", daysOnMarket: 30 },
-  "sandringham": { house: 1650000, unit: 720000, growth: 3.0, competition: "high", daysOnMarket: 25 },
-  "bayside": { house: 1820000, unit: 760000, growth: 2.8, competition: "high", daysOnMarket: 27 },
-  "frankston": { house: 680000, unit: 420000, growth: 5.8, competition: "medium", daysOnMarket: 28 },
-  "werribee": { house: 590000, unit: 390000, growth: 6.2, competition: "medium", daysOnMarket: 30 },
-  "point cook": { house: 720000, unit: 450000, growth: 5.5, competition: "medium", daysOnMarket: 26 },
-  "craigieburn": { house: 620000, unit: 410000, growth: 6.8, competition: "medium", daysOnMarket: 29 },
-  "essendon": { house: 1380000, unit: 620000, growth: 3.6, competition: "high", daysOnMarket: 21 },
-  "moonee ponds": { house: 1250000, unit: 580000, growth: 3.9, competition: "high", daysOnMarket: 20 },
-  "williamstown": { house: 1320000, unit: 640000, growth: 3.2, competition: "high", daysOnMarket: 23 },
-  "newport": { house: 1180000, unit: 580000, growth: 3.7, competition: "high", daysOnMarket: 22 },
-  "footscray": { house: 890000, unit: 490000, growth: 5.2, competition: "high", daysOnMarket: 19 },
-  "yarraville": { house: 980000, unit: 520000, growth: 4.8, competition: "high", daysOnMarket: 20 },
+  "doncaster east": { house: 1080000, unit: 600000, growth: 4.4, competition: "high", daysOnMarket: 19 },
+  "templestowe": { house: 1280000, unit: 660000, growth: 3.8, competition: "high", daysOnMarket: 24 },
+  "templestowe lower": { house: 1180000, unit: 640000, growth: 3.9, competition: "high", daysOnMarket: 22 },
+  "bulleen": { house: 1120000, unit: 620000, growth: 4.1, competition: "high", daysOnMarket: 21 },
+  "balwyn": { house: 1680000, unit: 680000, growth: 3.2, competition: "very high", daysOnMarket: 20 },
+  "balwyn north": { house: 1580000, unit: 660000, growth: 3.3, competition: "very high", daysOnMarket: 19 },
+  "deepdene": { house: 1820000, unit: 700000, growth: 3.0, competition: "very high", daysOnMarket: 22 },
+  "thornbury": { house: 1120000, unit: 540000, growth: 4.2, competition: "high", daysOnMarket: 20 },
   "reservoir": { house: 820000, unit: 470000, growth: 5.6, competition: "high", daysOnMarket: 18 },
   "preston": { house: 910000, unit: 500000, growth: 5.1, competition: "high", daysOnMarket: 19 },
+  "coburg": { house: 980000, unit: 520000, growth: 4.8, competition: "high", daysOnMarket: 20 },
+  "coburg north": { house: 920000, unit: 500000, growth: 4.9, competition: "high", daysOnMarket: 21 },
+  "pascoe vale": { house: 880000, unit: 490000, growth: 5.0, competition: "high", daysOnMarket: 20 },
+  "pascoe vale south": { house: 920000, unit: 500000, growth: 4.8, competition: "high", daysOnMarket: 21 },
+  "fawkner": { house: 720000, unit: 440000, growth: 5.8, competition: "medium", daysOnMarket: 22 },
+  "glenroy": { house: 740000, unit: 450000, growth: 5.6, competition: "medium", daysOnMarket: 23 },
+  "oak park": { house: 820000, unit: 470000, growth: 5.2, competition: "high", daysOnMarket: 21 },
   "heidelberg": { house: 980000, unit: 520000, growth: 4.4, competition: "medium", daysOnMarket: 23 },
-  "templestowe": { house: 1280000, unit: 660000, growth: 3.8, competition: "high", daysOnMarket: 24 },
-  "ringwood": { house: 880000, unit: 520000, growth: 4.9, competition: "medium", daysOnMarket: 25 },
-  "croydon": { house: 820000, unit: 490000, growth: 5.0, competition: "medium", daysOnMarket: 26 },
-  "berwick": { house: 750000, unit: 480000, growth: 5.3, competition: "medium", daysOnMarket: 27 },
-  "pakenham": { house: 620000, unit: 400000, growth: 6.1, competition: "medium", daysOnMarket: 29 },
+  "heidelberg heights": { house: 880000, unit: 490000, growth: 4.6, competition: "medium", daysOnMarket: 24 },
+  "heidelberg west": { house: 820000, unit: 470000, growth: 4.8, competition: "medium", daysOnMarket: 24 },
+  "rosanna": { house: 1080000, unit: 560000, growth: 4.2, competition: "high", daysOnMarket: 22 },
+  "macleod": { house: 980000, unit: 530000, growth: 4.4, competition: "medium", daysOnMarket: 23 },
+  "watsonia": { house: 880000, unit: 490000, growth: 4.6, competition: "medium", daysOnMarket: 24 },
+  "greensborough": { house: 820000, unit: 470000, growth: 4.8, competition: "medium", daysOnMarket: 25 },
+  "bundoora": { house: 780000, unit: 460000, growth: 5.0, competition: "medium", daysOnMarket: 24 },
+  "lalor": { house: 680000, unit: 420000, growth: 5.8, competition: "medium", daysOnMarket: 26 },
+  "thomastown": { house: 700000, unit: 430000, growth: 5.6, competition: "medium", daysOnMarket: 25 },
+  "epping": { house: 720000, unit: 440000, growth: 5.5, competition: "medium", daysOnMarket: 25 },
+  "south morang": { house: 740000, unit: 450000, growth: 5.3, competition: "medium", daysOnMarket: 26 },
+  "doreen": { house: 680000, unit: 420000, growth: 5.8, competition: "medium", daysOnMarket: 28 },
+  "mernda": { house: 660000, unit: 410000, growth: 6.0, competition: "medium", daysOnMarket: 27 },
+  "craigieburn": { house: 620000, unit: 410000, growth: 6.8, competition: "medium", daysOnMarket: 29 },
+  "roxburgh park": { house: 600000, unit: 390000, growth: 6.5, competition: "medium", daysOnMarket: 28 },
+  "meadow heights": { house: 580000, unit: 380000, growth: 6.6, competition: "medium", daysOnMarket: 29 },
+  "essendon": { house: 1380000, unit: 620000, growth: 3.6, competition: "high", daysOnMarket: 21 },
+  "essendon north": { house: 1280000, unit: 580000, growth: 3.7, competition: "high", daysOnMarket: 22 },
+  "essendon west": { house: 1220000, unit: 560000, growth: 3.8, competition: "high", daysOnMarket: 22 },
+  "moonee ponds": { house: 1250000, unit: 580000, growth: 3.9, competition: "high", daysOnMarket: 20 },
+  "ascot vale": { house: 1180000, unit: 560000, growth: 4.0, competition: "high", daysOnMarket: 21 },
+  "flemington": { house: 1120000, unit: 540000, growth: 4.2, competition: "high", daysOnMarket: 20 },
+  "avondale heights": { house: 880000, unit: 490000, growth: 4.8, competition: "medium", daysOnMarket: 24 },
+  "keilor east": { house: 820000, unit: 470000, growth: 5.0, competition: "medium", daysOnMarket: 25 },
+  "keilor": { house: 780000, unit: 450000, growth: 5.2, competition: "medium", daysOnMarket: 26 },
+  "niddrie": { house: 1020000, unit: 540000, growth: 4.4, competition: "high", daysOnMarket: 22 },
+  "strathmore": { house: 1080000, unit: 560000, growth: 4.2, competition: "high", daysOnMarket: 21 },
+  "tullamarine": { house: 760000, unit: 450000, growth: 5.3, competition: "medium", daysOnMarket: 25 },
+  "williamstown": { house: 1320000, unit: 640000, growth: 3.2, competition: "high", daysOnMarket: 23 },
   "newport": { house: 1180000, unit: 580000, growth: 3.7, competition: "high", daysOnMarket: 22 },
+  "altona": { house: 920000, unit: 510000, growth: 4.2, competition: "high", daysOnMarket: 23 },
+  "altona north": { house: 860000, unit: 490000, growth: 4.4, competition: "medium", daysOnMarket: 24 },
+  "altona meadows": { house: 780000, unit: 460000, growth: 4.8, competition: "medium", daysOnMarket: 26 },
+  "laverton": { house: 700000, unit: 430000, growth: 5.5, competition: "medium", daysOnMarket: 27 },
+  "hoppers crossing": { house: 650000, unit: 410000, growth: 5.8, competition: "medium", daysOnMarket: 28 },
+  "werribee": { house: 590000, unit: 390000, growth: 6.2, competition: "medium", daysOnMarket: 30 },
+  "point cook": { house: 720000, unit: 450000, growth: 5.5, competition: "medium", daysOnMarket: 26 },
+  "truganina": { house: 660000, unit: 420000, growth: 6.0, competition: "medium", daysOnMarket: 28 },
+  "tarneit": { house: 640000, unit: 410000, growth: 6.2, competition: "medium", daysOnMarket: 29 },
+  "wyndham vale": { house: 580000, unit: 380000, growth: 6.5, competition: "medium", daysOnMarket: 30 },
+  "footscray": { house: 890000, unit: 490000, growth: 5.2, competition: "high", daysOnMarket: 19 },
+  "yarraville": { house: 980000, unit: 520000, growth: 4.8, competition: "high", daysOnMarket: 20 },
+  "seddon": { house: 1020000, unit: 530000, growth: 4.6, competition: "high", daysOnMarket: 20 },
+  "spotswood": { house: 980000, unit: 510000, growth: 4.7, competition: "high", daysOnMarket: 21 },
+  "kingsville": { house: 1050000, unit: 540000, growth: 4.5, competition: "high", daysOnMarket: 20 },
+  "maidstone": { house: 880000, unit: 490000, growth: 5.0, competition: "high", daysOnMarket: 21 },
+  "maribyrnong": { house: 920000, unit: 510000, growth: 4.8, competition: "high", daysOnMarket: 21 },
+  "sunshine": { house: 780000, unit: 460000, growth: 5.5, competition: "high", daysOnMarket: 20 },
+  "sunshine north": { house: 740000, unit: 450000, growth: 5.6, competition: "medium", daysOnMarket: 22 },
+  "sunshine west": { house: 720000, unit: 440000, growth: 5.7, competition: "medium", daysOnMarket: 22 },
+  "deer park": { house: 680000, unit: 420000, growth: 5.9, competition: "medium", daysOnMarket: 25 },
+  "caroline springs": { house: 680000, unit: 420000, growth: 5.8, competition: "medium", daysOnMarket: 26 },
+  "brooklyn": { house: 760000, unit: 450000, growth: 5.4, competition: "medium", daysOnMarket: 24 },
+  "brighton": { house: 2400000, unit: 880000, growth: 2.4, competition: "very high", daysOnMarket: 30 },
+  "brighton east": { house: 2100000, unit: 820000, growth: 2.5, competition: "very high", daysOnMarket: 28 },
+  "sandringham": { house: 1650000, unit: 720000, growth: 3.0, competition: "high", daysOnMarket: 25 },
+  "hampton": { house: 1820000, unit: 780000, growth: 2.8, competition: "very high", daysOnMarket: 26 },
+  "hampton east": { house: 1620000, unit: 720000, growth: 2.9, competition: "high", daysOnMarket: 26 },
+  "beaumaris": { house: 1780000, unit: 740000, growth: 2.9, competition: "high", daysOnMarket: 27 },
+  "black rock": { house: 1950000, unit: 800000, growth: 2.7, competition: "high", daysOnMarket: 29 },
+  "mentone": { house: 1280000, unit: 620000, growth: 3.4, competition: "high", daysOnMarket: 24 },
+  "parkdale": { house: 1180000, unit: 590000, growth: 3.6, competition: "high", daysOnMarket: 23 },
+  "cheltenham": { house: 1120000, unit: 570000, growth: 3.8, competition: "high", daysOnMarket: 22 },
+  "highett": { house: 1080000, unit: 560000, growth: 3.9, competition: "high", daysOnMarket: 22 },
+  "moorabbin": { house: 1020000, unit: 540000, growth: 4.1, competition: "high", daysOnMarket: 21 },
+  "bentleigh": { house: 1280000, unit: 600000, growth: 3.5, competition: "very high", daysOnMarket: 20 },
+  "bentleigh east": { house: 1180000, unit: 580000, growth: 3.7, competition: "high", daysOnMarket: 21 },
+  "mckinnon": { house: 1380000, unit: 630000, growth: 3.4, competition: "very high", daysOnMarket: 19 },
+  "ormond": { house: 1280000, unit: 610000, growth: 3.5, competition: "high", daysOnMarket: 21 },
+  "glen huntly": { house: 1220000, unit: 590000, growth: 3.6, competition: "high", daysOnMarket: 21 },
+  "caulfield": { house: 1480000, unit: 680000, growth: 3.1, competition: "very high", daysOnMarket: 21 },
+  "caulfield north": { house: 1680000, unit: 720000, growth: 3.0, competition: "very high", daysOnMarket: 22 },
+  "caulfield south": { house: 1420000, unit: 660000, growth: 3.2, competition: "high", daysOnMarket: 22 },
+  "caulfield east": { house: 1380000, unit: 640000, growth: 3.3, competition: "high", daysOnMarket: 22 },
+  "glen waverley": { house: 1180000, unit: 620000, growth: 4.8, competition: "very high", daysOnMarket: 16 },
+  "mount waverley": { house: 1120000, unit: 600000, growth: 4.9, competition: "very high", daysOnMarket: 17 },
+  "mulgrave": { house: 920000, unit: 520000, growth: 5.2, competition: "high", daysOnMarket: 20 },
+  "wheelers hill": { house: 1020000, unit: 560000, growth: 4.8, competition: "high", daysOnMarket: 20 },
+  "rowville": { house: 880000, unit: 500000, growth: 5.0, competition: "medium", daysOnMarket: 23 },
+  "ferntree gully": { house: 780000, unit: 460000, growth: 5.4, competition: "medium", daysOnMarket: 24 },
+  "knoxfield": { house: 820000, unit: 470000, growth: 5.2, competition: "medium", daysOnMarket: 24 },
+  "wantirna": { house: 860000, unit: 490000, growth: 5.0, competition: "medium", daysOnMarket: 23 },
+  "wantirna south": { house: 920000, unit: 510000, growth: 4.9, competition: "medium", daysOnMarket: 22 },
+  "bayswater": { house: 800000, unit: 460000, growth: 5.3, competition: "medium", daysOnMarket: 24 },
+  "boronia": { house: 760000, unit: 450000, growth: 5.4, competition: "medium", daysOnMarket: 25 },
+  "ringwood": { house: 880000, unit: 520000, growth: 4.9, competition: "medium", daysOnMarket: 25 },
+  "ringwood east": { house: 840000, unit: 490000, growth: 5.0, competition: "medium", daysOnMarket: 25 },
+  "ringwood north": { house: 920000, unit: 520000, growth: 4.8, competition: "medium", daysOnMarket: 24 },
+  "croydon": { house: 820000, unit: 490000, growth: 5.0, competition: "medium", daysOnMarket: 26 },
+  "croydon north": { house: 800000, unit: 470000, growth: 5.1, competition: "medium", daysOnMarket: 26 },
+  "croydon south": { house: 840000, unit: 490000, growth: 4.9, competition: "medium", daysOnMarket: 25 },
+  "mooroolbark": { house: 780000, unit: 460000, growth: 5.2, competition: "medium", daysOnMarket: 26 },
+  "lilydale": { house: 740000, unit: 440000, growth: 5.5, competition: "medium", daysOnMarket: 27 },
+  "kilsyth": { house: 720000, unit: 430000, growth: 5.6, competition: "medium", daysOnMarket: 27 },
+  "frankston": { house: 680000, unit: 420000, growth: 5.8, competition: "medium", daysOnMarket: 28 },
+  "frankston south": { house: 820000, unit: 480000, growth: 5.4, competition: "medium", daysOnMarket: 28 },
+  "frankston north": { house: 580000, unit: 380000, growth: 6.2, competition: "medium", daysOnMarket: 30 },
+  "langwarrin": { house: 720000, unit: 440000, growth: 5.5, competition: "medium", daysOnMarket: 28 },
+  "seaford": { house: 700000, unit: 430000, growth: 5.7, competition: "medium", daysOnMarket: 27 },
+  "carrum": { house: 820000, unit: 480000, growth: 5.2, competition: "medium", daysOnMarket: 26 },
+  "chelsea": { house: 860000, unit: 490000, growth: 5.0, competition: "medium", daysOnMarket: 26 },
+  "mordialloc": { house: 980000, unit: 540000, growth: 4.5, competition: "high", daysOnMarket: 24 },
+  "aspendale": { house: 1080000, unit: 570000, growth: 4.2, competition: "high", daysOnMarket: 24 },
+  "berwick": { house: 750000, unit: 480000, growth: 5.3, competition: "medium", daysOnMarket: 27 },
+  "beaconsfield": { house: 720000, unit: 450000, growth: 5.5, competition: "medium", daysOnMarket: 28 },
+  "narre warren": { house: 660000, unit: 420000, growth: 5.9, competition: "medium", daysOnMarket: 28 },
+  "narre warren south": { house: 700000, unit: 430000, growth: 5.7, competition: "medium", daysOnMarket: 28 },
+  "hampton park": { house: 620000, unit: 400000, growth: 6.2, competition: "medium", daysOnMarket: 29 },
+  "cranbourne": { house: 620000, unit: 400000, growth: 6.3, competition: "medium", daysOnMarket: 29 },
+  "cranbourne north": { house: 640000, unit: 410000, growth: 6.2, competition: "medium", daysOnMarket: 29 },
+  "cranbourne east": { house: 620000, unit: 400000, growth: 6.3, competition: "medium", daysOnMarket: 30 },
+  "pakenham": { house: 620000, unit: 400000, growth: 6.1, competition: "medium", daysOnMarket: 29 },
+  "officer": { house: 640000, unit: 410000, growth: 6.0, competition: "medium", daysOnMarket: 29 },
+  "clyde north": { house: 600000, unit: 390000, growth: 6.4, competition: "medium", daysOnMarket: 30 },
+  "mornington": { house: 820000, unit: 500000, growth: 5.2, competition: "medium", daysOnMarket: 28 },
+  "mount eliza": { house: 1080000, unit: 580000, growth: 4.4, competition: "medium", daysOnMarket: 30 },
+  "mount martha": { house: 980000, unit: 560000, growth: 4.6, competition: "medium", daysOnMarket: 30 },
+  "rosebud": { house: 680000, unit: 430000, growth: 5.6, competition: "low", daysOnMarket: 35 },
+  "rye": { house: 720000, unit: 450000, growth: 5.4, competition: "low", daysOnMarket: 36 },
+  "sorrento": { house: 1280000, unit: 680000, growth: 4.0, competition: "low", daysOnMarket: 40 },
+  "portsea": { house: 2200000, unit: 900000, growth: 3.0, competition: "low", daysOnMarket: 45 },
+  "dromana": { house: 780000, unit: 480000, growth: 5.2, competition: "low", daysOnMarket: 34 },
+  "hastings": { house: 620000, unit: 400000, growth: 5.9, competition: "low", daysOnMarket: 36 },
+  "carnegie": { house: 1180000, unit: 580000, growth: 3.7, competition: "high", daysOnMarket: 21 },
+  "murrumbeena": { house: 1220000, unit: 590000, growth: 3.6, competition: "high", daysOnMarket: 21 },
+  "oakleigh": { house: 1080000, unit: 560000, growth: 4.0, competition: "high", daysOnMarket: 21 },
+  "oakleigh south": { house: 1020000, unit: 540000, growth: 4.1, competition: "high", daysOnMarket: 22 },
+  "oakleigh east": { house: 980000, unit: 530000, growth: 4.2, competition: "high", daysOnMarket: 22 },
+  "huntingdale": { house: 980000, unit: 530000, growth: 4.3, competition: "high", daysOnMarket: 22 },
+  "clayton": { house: 980000, unit: 540000, growth: 4.4, competition: "high", daysOnMarket: 21 },
+  "clayton south": { house: 940000, unit: 520000, growth: 4.5, competition: "high", daysOnMarket: 22 },
+  "springvale": { house: 820000, unit: 470000, growth: 5.3, competition: "high", daysOnMarket: 20 },
+  "noble park": { house: 760000, unit: 450000, growth: 5.6, competition: "medium", daysOnMarket: 22 },
+  "dandenong": { house: 680000, unit: 420000, growth: 5.9, competition: "medium", daysOnMarket: 22 },
+  "keysborough": { house: 820000, unit: 480000, growth: 5.2, competition: "medium", daysOnMarket: 23 },
+  "glen waverley": { house: 1180000, unit: 620000, growth: 4.8, competition: "very high", daysOnMarket: 16 },
+  "bayside": { house: 1820000, unit: 760000, growth: 2.8, competition: "high", daysOnMarket: 27 },
 };
 
 const BEDROOM_ADJUSTMENTS = { 1: -0.32, 2: -0.12, 3: 0, 4: 0.22, 5: 0.42 };
+
+function findSuburb(input) {
+  const clean = input.toLowerCase().trim().replace(/\s+/g, " ");
+  if (SUBURB_DATA[clean]) return { key: clean, data: SUBURB_DATA[clean] };
+  for (const key of Object.keys(SUBURB_DATA)) {
+    if (key.startsWith(clean) || clean.startsWith(key)) return { key, data: SUBURB_DATA[key] };
+  }
+  for (const key of Object.keys(SUBURB_DATA)) {
+    if (key.includes(clean) || clean.includes(key)) return { key, data: SUBURB_DATA[key] };
+  }
+  return null;
+}
 
 function fmt(n) {
   if (n >= 1000000) return `$${(n / 1000000).toFixed(2)}M`;
@@ -139,10 +321,11 @@ export default function App() {
 
   const analyse = () => {
     setError("");
-    const key = form.suburb.toLowerCase().trim();
-    const data = SUBURB_DATA[key];
-    if (!data) { setError("Suburb not found. Try Hawthorn, Brunswick, Frankston, or Richmond."); return; }
+    const found = findSuburb(form.suburb);
+    if (!found) { setError("Suburb not found. Try suburbs like Hawthorn, Bentleigh, Frankston, or Brighton."); return; }
+    const { key, data } = found;
     const base = form.propertyType === "house" ? data.house : data.unit;
+    if (!base) { setError("No data available for this property type in this suburb."); return; }
     const adj = BEDROOM_ADJUSTMENTS[parseInt(form.bedrooms)] || 0;
     const mid = Math.round(base * (1 + adj) / 1000) * 1000;
     const low = Math.round(mid * 0.92 / 1000) * 1000;
@@ -155,7 +338,7 @@ export default function App() {
     const strategies = getStrategies(pos.label, data.competition, data.daysOnMarket, listing, low, high, open, walk);
     const risks = getRisks(data.competition, data.daysOnMarket, listing, high);
     const needsPro = pos.label === "Overpriced" || pos.label === "Slightly High" || data.competition === "very high";
-    setResult({ low, high, mid, pos, strategies, open, walk, risks, needsPro, listing, data, suburb: form.suburb, propertyType: form.propertyType, bedrooms: form.bedrooms });
+    setResult({ low, high, pos, strategies, open, walk, risks, needsPro, listing, data, suburb: key, propertyType: form.propertyType, bedrooms: form.bedrooms });
     goTo("result");
   };
 
@@ -213,7 +396,7 @@ export default function App() {
         <p style={{ fontSize: 21, fontWeight: 900, marginBottom: 5, letterSpacing: "-.5px" }}>Check this property</p>
         <p style={{ fontSize: 14, color: MD, marginBottom: 22, lineHeight: 1.5 }}>Enter the details to get your free price check and negotiation strategy.</p>
         {error && <div style={s.err}>{error}</div>}
-        <div style={s.fg}><label style={s.lbl}>Melbourne Suburb</label><input style={s.inp} placeholder="e.g. Hawthorn, Brunswick, Frankston" value={form.suburb} onChange={e => setForm({ ...form, suburb: e.target.value })} /></div>
+        <div style={s.fg}><label style={s.lbl}>Melbourne Suburb</label><input style={s.inp} placeholder="e.g. Hawthorn, Bentleigh, Frankston" value={form.suburb} onChange={e => setForm({ ...form, suburb: e.target.value })} /></div>
         <div style={{ ...s.row, ...s.fg }}>
           <div><label style={s.lbl}>Property Type</label><select style={s.sel} value={form.propertyType} onChange={e => setForm({ ...form, propertyType: e.target.value })}><option value="house">House</option><option value="unit">Unit / Apt</option></select></div>
           <div><label style={s.lbl}>Bedrooms</label><select style={s.sel} value={form.bedrooms} onChange={e => setForm({ ...form, bedrooms: e.target.value })}>{[1,2,3,4,5].map(n => <option key={n} value={n}>{n} bed</option>)}</select></div>
@@ -285,7 +468,7 @@ export default function App() {
           </div>
           {!consultSent ? (
             <div style={s.ctaCard}>
-              <p style={{ fontSize: 19, fontWeight: 900, color: "#fff", marginBottom: 7, letterSpacing: "-.3px" }}>{result.needsPro ? "This deal needs expert eyes." : "Want a second opinion?"}</p>
+              <p style={{ fontSize: 19, fontWeight: 900, color: "#fff", marginBottom: 7 }}>{result.needsPro ? "This deal needs expert eyes." : "Want a second opinion?"}</p>
               <p style={{ fontSize: 14, color: "rgba(255,255,255,.8)", lineHeight: 1.6, marginBottom: 18 }}>{result.needsPro ? "This property has characteristics that typically need professional negotiation. Book a free NewPF consultation — no obligation." : "Book a free consultation with NewPF and we'll pressure-test this deal with you."}</p>
               <input style={s.ctaInp} placeholder="Your name" value={consultName} onChange={e => setConsultName(e.target.value)} />
               <input style={s.ctaInp} placeholder="Your phone (optional)" value={consultPhone} onChange={e => setConsultPhone(e.target.value)} />
@@ -311,3 +494,5 @@ export default function App() {
 
   return null;
 }
+
+
